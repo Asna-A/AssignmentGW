@@ -1,0 +1,88 @@
+CREATE TABLE: Creates an Employees table with columns for EmployeeID, FirstName, LastName, Department, and Salary.
+
+	create database Emp;
+
+	use Emp;
+	Create table Employees(EmployeeID int primary key, FirstName varchar(50), LastName varchar(50), Department varchar(50),Salary int);
+
+INSERT: Adds three employee records to the table.
+
+	insert into Employees values
+	(1,'Abin','Adam','IT',250000)
+
+	insert into Employees values
+	(2,'Liya','John','EC',480000),(3,'Cathen','Roy','EC',480000);
+
+Select all columns and rows
+
+	select * from Employees;
+
+Select specific columns
+
+	select EmployeeID,FirstName from Employees;
+
+Select with a WHERE clause to filter results
+
+	select * from Employees where Department='EC';
+
+What is the purpose of the IDENTITY keyword in the CREATE TABLE statement?
+
+	MS SQL Server uses the IDENTITY keyword to perform an auto-increment feature
+	
+	value int identity(1,2) -value starts at 1 and increments by 2 each time
+
+	create table IdentityTable(id int identity(1,2),Name varchar(50);
+
+	insert into IdentityTable values('Ayan'),('Rayan');
+
+	select * from IdentityTable;
+
+	Ayan with id=1 and Rayan with id=3 is created.
+
+Write a SELECT statement to retrieve only the FirstName and Salary of all employees.
+	
+	select FirstName,Salary from Employees;
+
+How would you modify the existing UPDATE statement to give all employees in the IT department a 10% raise
+
+	ALTER TABLE Employees
+	ALTER COLUMN Salary float;
+	update Employees
+	set salary=250000.0 where EmployeeID=1;
+	update Employees
+	set salary=480000.0 where EmployeeID IN (2,3);
+	update Employees
+	set salary=salary+0.10*salary where Department='IT';
+
+Write a SELECT statement to find the highest salary in the Employees table
+
+	select  MAX(Salary) from Employees;
+
+How would you add a new column named "HireDate" of type DATE to the Employees table?
+
+	ALTER table Employees
+	ADD HireDate DATE;
+
+Write an INSERT statement to add a new employee named "Sarah Brown" in the "Marketing" department with a salary of 72000.00.
+
+	INSERT INTO Employees(EmployeeID,FirstName,LastName,Department,Salary) values(4,'Sarah','Brown','Marketing',72000.0);
+
+How would you modify the table to ensure that the Salary column cannot contain negative values?
+
+	alter table Employees
+	add check(Salary>0);
+
+How would you add a UNIQUE constraint to the Employees table to ensure that no two employees can have the same email address
+
+	alter table Employees
+	add unique(email);
+
+Write an ALTER TABLE statement to add an "Email" column to the Employees table with a UNIQUE constraint that allows NULL values
+
+CREATE UNIQUE NONCLUSTERED INDEX InX_Email
+ON Employees (email) where email is NOT NULL;
+
+	
+	
+	
+	
