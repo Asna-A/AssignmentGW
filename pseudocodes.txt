@@ -1,0 +1,110 @@
+Sum of three numbers
+
+input num1,num2,num3
+Declare sum
+sum=num1+num2+num3
+output sum
+
+Sum of squares of two numbers
+
+input num1,num2
+declare num1square,num2square
+num1square=num1*num1
+num2square=num2*num2
+declare sum
+sum=num1square+num2square
+output sum
+
+Reverse a number
+
+input number
+declare reversenumber=0
+WHILE number>0
+    lastnumber=number MOD 10
+    reversenumber=reversenumber*10+lastnumber
+    number=number/10
+ENDWHILE
+
+Reverse a string
+
+input stringname
+declare length
+length=length of stringname
+declare reversed_string as empty string
+FOR each index i of stringname
+    reversed_string=reversed_string+stringname[length-i-1]
+ENDFOR
+RETURN reversed_string
+
+Find the given character in the string, return true or false
+
+input stringname,charactername
+FOR each index of stringname
+    IF stringname[i]==charactername
+        RETURN true
+ENDFOR
+RETURN false
+
+Find the number of occurrences of a character in a given string
+
+input stringname,charactername
+Declare count
+FOR each index of stringname
+    IF stringname[i]==charactername
+        count++
+RETURN count
+
+Fibonacci series of numbers
+
+Declare a=0,b=1
+input numbercount
+output a,b
+WHILE numbercount>0
+    c=a+b
+    a=b
+    b=c
+    output c
+    numbercount--
+ENDWHILE
+
+Linear search
+
+input array,number
+FOR each index of array
+    IF array[i]==number
+        Flag=1
+        break
+ENDFOR
+IF Flag==1
+    print number is found at index i
+ELSE
+    print number is not found
+
+
+Binary search
+
+input array,number
+declare mid,low=0,high=length of array
+WHILE low<=high
+    mid=(low+(high-low))/2
+    IF array[mid]==number
+        Flag=1
+        break
+    ELSE
+
+
+
+
+Bubble sort
+input array
+Declare temp
+FOR i=0 to length-1
+    FOR j=0 to length-i-1
+        IF array[j]>array[j+1]
+            temp=array[j]
+            array[j]=array[j+1]
+            array[j+1]=temp
+    ENDFOR
+ENDFOR
+output array
+    
