@@ -335,7 +335,7 @@ select @christmas as christmas
 
 	Write a query to convert separate year, month, and day columns from a 'Dates' table into a single DATE column.
 
- update datetable
+ update dates
  set datecolumn=DATEFROMPARTS(year,month,day)
 
 
