@@ -7,10 +7,10 @@ CREATE TABLE: Creates an Employees table with columns for EmployeeID, FirstName,
 
 INSERT: Adds three employee records to the table.
 
-	insert into Employees values
+	insert into Employees (EmployeeID, FirstName, LastName, Department, Salary) values
 	(1,'Abin','Adam','IT',250000)
 
-	insert into Employees values
+	insert into Employees (EmployeeID, FirstName, LastName, Department, Salary) values
 	(2,'Liya','John','EC',480000),(3,'Cathen','Roy','EC',480000);
 
 Select all columns and rows
@@ -46,7 +46,7 @@ Write a SELECT statement to retrieve only the FirstName and Salary of all employ
 How would you modify the existing UPDATE statement to give all employees in the IT department a 10% raise
 
 	ALTER TABLE Employees
-	ALTER COLUMN Salary float;
+	ALTER COLUMN Salary DECIMAL(10, 2);
 	update Employees
 	set salary=250000.0 where EmployeeID=1;
 	update Employees
@@ -75,7 +75,7 @@ How would you modify the table to ensure that the Salary column cannot contain n
 How would you add a UNIQUE constraint to the Employees table to ensure that no two employees can have the same email address
 
 	alter table Employees
-	add unique(email);
+	ADD CONSTRAINT UQ_Email UNIQUE (email));
 
 Write an ALTER TABLE statement to add an "Email" column to the Employees table with a UNIQUE constraint that allows NULL values
 
