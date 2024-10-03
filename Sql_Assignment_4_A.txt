@@ -1,0 +1,41 @@
+-- 1. List all patients and their appointments, including patients who have never had an appointment.
+
+select patientname,appointmentid from patients p left join appointments a on p.patientid=a.patientid 
+
+-- 2. Display all doctors and their scheduled appointments, including doctors without any appointments.
+
+select doctorname,appointmentdate from doctors d left join appointments a on d.doctorid=a.doctorid 
+
+-- 3. Show all medications and the patients they've been prescribed to, including medications that haven't been prescribed.
+
+select medicationname,patientname from medications m left join prescriptions p on m.medicationid=p.medicationid left join patients pa on p.patientid=pa.patientid
+
+-- 4. List all possible patient-doctor combinations, regardless of whether an appointment has occurred.
+
+select patientname,doctorname from patients cross join doctors
+
+-- 5. Display all prescriptions with patient and medication information, including prescriptions where either the patient or medication information is missing.
+
+select prescriptionid,patientname,dateofbirth,gender,medicationname,dosageform from prescriptions pa LEFT join medications m on m.medicationid=pa.medicationid left join patients p on p.patientid=pa.patientid
+
+-- 6. Show all patients who have never been prescribed any medication, along with their appointment history.
+
+select patientname,appointmentdate,doctorname from patients p left join appointments a on p.patientid=a.patientid left join prescriptions pr on  pr.patientid=p.patientid left join doctors d on a.doctorid=d.doctorid where medicationid IS NULL
+
+-- 7. List all doctors who have appointments in the next week, along with the patients they're scheduled to see.
+
+select doctorname,appointmentdate from doctors d left join appointments a on d.doctorid=a.doctorid where datepart(week,appointmentdate)=datepart(week,getdate())+1 and year(appointmentdate)=year(getdate())
+
+-- 8. Display all medications prescribed to patients over 60 years old, including medications not prescribed to this age group.
+
+select medicationname,patientname from medications m left join prescriptions p on m.medicationid=p.medicationid left join patients pa on pa.patientid=p.patientid where pa.patientid is null or datediff(year,dateofbirth,getdate())>60
+
+-- 9. Show all appointments from last year and any associated prescription information.
+
+select appointmentdate,patientname,prescriptiondate from appointments a left join patients pa on a.patientid=pa.patientid left join prescriptions p on p.patientid=pa.patientid where year(appointmentdate)=year(getdate()) - 1
+
+-- 10. List all possible specialty-medication combinations, regardless of whether a doctor of that specialty has prescribed that medication.
+
+select specialty,medicationname from doctors cross join medications 
+
+
