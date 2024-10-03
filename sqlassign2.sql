@@ -37,7 +37,7 @@ Identify employees earning more than $80,000 annually.
 
 Find employees who joined the company before 2020.
 
-	select * from Employees where HireDate<'2020'
+	select * from Employees where year(HireDate)<'2020'
 
 List all employees not named 'John' (first name).
 
