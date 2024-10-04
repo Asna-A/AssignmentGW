@@ -1,0 +1,60 @@
+create table users(userid int primary key identity(1,1),
+Name varchar(50),
+phone_number nvarchar(15),
+email varchar(254) unique,
+addressid int not null,
+foreign key(addressid) references addresses(addressid));
+
+
+create table addresses(addressid int primary key identity(1,1),
+StreetAddress VARCHAR(100),
+City VARCHAR(50),
+State VARCHAR(50),
+PostalCode VARCHAR(10),
+Country VARCHAR(50));
+
+
+create table products(productid int primary key identity(1,1),
+productname varchar(50) not null,
+categoryid int not null,
+price decimal(10,2) not null,
+foreign key(categoryid) references categories(categoryid));
+
+
+create table categories(categoryid int primary key identity(1,1),
+categoryname varchar(50) not null);
+
+
+create table orders(orderid int primary key identity(1,1),
+userid int not null,
+productid int not null,
+categoryid int not null,
+quantity int not null,
+total_amount decimal(10,2) not null,
+orderStatus VARCHAR(20) NOT NULL, 
+orderDate DATETIME NOT NULL DEFAULT GETDATE(),
+foreign key(productid) references products(productid),
+foreign key(userid) references users(userid));
+
+
+create table payments(
+PaymentID INT PRIMARY KEY IDENTITY(1,1),
+OrderID INT NOT NULL,
+PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+Amount DECIMAL(10, 2) NOT NULL,
+PaymentMethod VARCHAR(50) NOT NULL, 
+PaymentStatus VARCHAR(20) NOT NULL, 
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID));
+
+
+create table Reviews(
+Reviewid int primary key identity(1,1),
+Productid int NOT NULL,
+userid INT NOT NULL,
+Rating int ,
+comments text,
+foreign key(userid) references users(userid),
+foreign key(Productid) references Products(Productid),
+constraint check_rating check (rating between 1 and 5));
+
+
