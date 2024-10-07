@@ -1,0 +1,86 @@
+create table Users(
+userid int primary key identity(1,1),
+Name varchar(50) not null,
+phone_number nvarchar(15),
+email varchar(254) unique,
+password varchar(50) not null);
+
+
+create table Movies(
+Movieid int primary key identity(1,1),
+Genre varchar(20) not null,
+Duration Time not null,
+language varchar(50),
+Realesedate Date not null);
+
+
+create table addresses(
+addressid int primary key identity(1,1),
+StreetAddress VARCHAR(100),
+City VARCHAR(50),
+State VARCHAR(50),
+PostalCode VARCHAR(10),
+Country VARCHAR(50));
+
+
+create table Theatres(Theatreid int primary key identity(1,1),
+addressid int not null,
+totalscreens int not null,
+foreign key(addressid) references addresses(addressid));
+
+
+CREATE TABLE Screens (
+ScreenID INT PRIMARY KEY IDENTITY(1,1),               
+ScreenNumber NVARCHAR(10) NOT NULL, 
+Capacity INT NOT NULL,        
+ScreenType NVARCHAR(50), 
+Theatreid int not null,
+totalshows int not null,
+foreign key(Theatreid) references theatres(theatreid));
+
+
+create table Shows(ShowID INT PRIMARY KEY IDENTITY(1,1),
+ScreenID INT NOT NULL,                           
+MovieID INT NOT NULL,                            
+ShowTime DATETIME NOT NULL,                                        
+SeatsAvailable INT NOT NULL,  
+FOREIGN KEY (MovieID) REFERENCES Movies(MovieID),
+FOREIGN KEY (ScreenID) REFERENCES Screens(ScreenID));
+
+
+create table Booking(Bookingid int PRIMARY KEY IDENTITY(1,1),
+Userid int not null,
+Theatreid int not null,
+Movieid int not null,
+ShowID INT  not null,
+ScreenID INT NOT NULL,
+SeatID INT  not null,
+no_of_tickets int not null,
+Amount decimal(10,2),
+Paymentid int not null,
+FOREIGN KEY (theatreID) REFERENCES Theatres(TheatreID),
+FOREIGN KEY (MovieID) REFERENCES Movies(MovieID),
+FOREIGN KEY (ShowID) REFERENCES Shows(ShowID),
+FOREIGN KEY (ScreenID) REFERENCES Screens(ScreenID),
+FOREIGN KEY (UserID) REFERENCES Users(UserID));
+
+
+CREATE TABLE Seats (
+SeatID INT PRIMARY KEY IDENTITY(1,1),         
+ScreenID INT NOT NULL,                          
+SeatNumber NVARCHAR(10) NOT NULL,              
+SeatType NVARCHAR(50),                          
+IsAvailable BIT NOT NULL DEFAULT 1,  
+SeatPrice decimal(10,2),
+FOREIGN KEY (ScreenID) REFERENCES Screens(ScreenID));
+
+
+create table payments(PaymentID INT PRIMARY KEY IDENTITY(1,1),
+bookingID INT NOT NULL,
+PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+Amount DECIMAL(10, 2) NOT NULL,
+PaymentMethod VARCHAR(50) NOT NULL, 
+PaymentStatus VARCHAR(20) NOT NULL, 
+FOREIGN KEY (BookingID) REFERENCES Booking(BookingID));
+
+
