@@ -9,6 +9,9 @@
     li{
         margin: 7px;
     }
+    .deleteButton{
+        margin-left: 10px;
+    }
 </style>
 <body>
     <h1>My Shopping List</h1>
@@ -21,11 +24,13 @@
     <script>
         function additem()
         {
-            let name=document.getElementById("item").value + " ";
+            
+            let name=document.getElementById("item").value;
             let ul_element=document.getElementById("ul");
             let li_element=document.createElement("li");
             li_element.innerHTML=name;
             let delete_button=document.createElement("button");
+            delete_button.className="deleteButton"
             delete_button.innerHTML="Delete";
             delete_button.onclick=function()
             {
