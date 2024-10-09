@@ -1,0 +1,7 @@
+<app-add-item (newItemEvent)="addNewItem($event)" [count]="countvalue"></app-add-item>
+<ul>
+<li *ngFor="let item of items,let index=index">
+    {{item}}
+    <button type="button" class="deleteButton" (click)="deleteItem(index)">Delete item</button>
+</li>
+</ul>
