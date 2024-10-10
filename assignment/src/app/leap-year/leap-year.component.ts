@@ -13,13 +13,13 @@ import { CommonModule } from '@angular/common';
 export class LeapYearComponent {
   year:number|null=null;
   checked=false;
-  isleapyear=false;
+  isLeapYear=false;
 
   checkLeapYear()
   {
     this.checked=true
     if(this.year!==null) {
-      this.isleapyear=(this.year%400)===0||(this.year%100!==0 && this.year%4===0)
+      this.isLeapYear=(this.year%400)===0||(this.year%100!==0 && this.year%4===0)
      }
   }
 
