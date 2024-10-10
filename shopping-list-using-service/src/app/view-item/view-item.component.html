@@ -1,0 +1,7 @@
+
+<ul>
+<li *ngFor="let item of items,let index=index">
+    {{item}}
+    <button class="deleteButton" type="button" class="deleteButton" (click)="deleteItem(index)">Delete item</button>
+</li>
+</ul>
