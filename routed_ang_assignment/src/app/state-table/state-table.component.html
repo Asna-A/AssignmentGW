@@ -1,0 +1,10 @@
+<h1>Question1</h1>
+<table>
+    <tr><th>State</th><th>Chief Minister</th><th>Capital</th></tr>
+    <tr *ngFor="let state of states">
+        <td class="state"><b>{{state.name}}</b></td>
+        <td>{{state.chiefMinister}}</td>
+        <td>{{state.capital}}</td>
+    </tr>
+  </table>
+  
