@@ -26,16 +26,22 @@ Price decimal(10,2) not null,
 foreign key(CategoryId) references Categories(CategoryId));
 
 
+create table OrderedProducts(OrderedProductsId int primary key identity(1,1),
+ProductId int not null,
+Quantity int not null,
+Amount decimal(10,2) not null,
+foreign key(ProductId) references Products(ProductId)
+);
+
+
 create table Orders(OrderID int primary key identity(1,1),
 UserId int not null,
-ProductId int not null,
-CategoryId int not null,
-Quantity int not null,
+OrderedProductsId int not null,
 TotalAmount decimal(10,2) not null,
 OrderStatus VARCHAR(20) NOT NULL, 
 OrderDate DATETIME NOT NULL DEFAULT GETDATE(),
-foreign key(ProductId) references Products(ProductId),
 foreign key(UserId) references Users(UserId));
+foreign key(OrderedProductsId) references OrderedProducts(OrderedProductsId);
 
 
 create table Payments(
