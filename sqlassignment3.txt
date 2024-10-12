@@ -25,7 +25,7 @@ select Right(@string,4);
 
  	From an 'Orders' table with an 'OrderID' column (format: ORD-YYYY-NNNN), write a query to extract just the numeric portion at the end.
 
-select right(orderid,4) as NNNN from orders
+select replace(orderid,'ORD-YYYY-','') as NNNN from orders
 
 	Write a query to find the length of the string 'SQL Server Functions'.
 
