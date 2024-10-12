@@ -1,3 +1,13 @@
+create table addresses(addressid int primary key identity(1,1),
+StreetAddress VARCHAR(100),
+City VARCHAR(50),
+State VARCHAR(50),
+PostalCode VARCHAR(10),
+Country VARCHAR(50));
+
+
+
+
 create table users(userid int primary key identity(1,1),
 Name varchar(50),
 phone_number nvarchar(15),
@@ -5,13 +15,10 @@ email varchar(254) unique,
 addressid int not null,
 foreign key(addressid) references addresses(addressid));
 
+create table categories(categoryid int primary key identity(1,1),
+categoryname varchar(50) not null);
 
-create table addresses(addressid int primary key identity(1,1),
-StreetAddress VARCHAR(100),
-City VARCHAR(50),
-State VARCHAR(50),
-PostalCode VARCHAR(10),
-Country VARCHAR(50));
+
 
 
 create table products(productid int primary key identity(1,1),
@@ -21,8 +28,6 @@ price decimal(10,2) not null,
 foreign key(categoryid) references categories(categoryid));
 
 
-create table categories(categoryid int primary key identity(1,1),
-categoryname varchar(50) not null);
 
 
 create table orders(orderid int primary key identity(1,1),
