@@ -207,7 +207,7 @@ SELECT dateDIFF(MINUTE, GETUTCDATE(), GETDATE());
 
 	Convert the current date and time to 'Pacific Standard Time'.
 
-SELECT GETDATE() at time zone 'Pacific standard time' as pacific_std_time
+SELECT GETDATE() at time zone 'UTC' at time zone 'Pacific standard time' as pacific_std_time;
 
 	From a 'Flights' table with a 'DepartureTime' column in UTC, convert all departure times to 'Eastern Standard Time'.
 
