@@ -11,17 +11,14 @@ import { CommonModule } from '@angular/common';
 })
 export class ViewItemComponent {
   
-  countvalue: number =0;
-  items:string[]=[];
+  @Output() deleteItemEvent=new EventEmitter<number>();
+  @Input() items:string[]=[];
+  index: number | undefined;
   
-  deleteItem(index: number) {
-    this.items.splice(index,1)
-    this.countvalue=this.items.length;
+  deleteItem(value: number) {
+    this.deleteItemEvent.emit(this.index);
   }
   
-  addNewItem(newItem:string) {
-    this.items.push(newItem);
-    this.countvalue=this.items.length;
-  }
+  
   
 }
