@@ -12,6 +12,7 @@ namespace EmployeeManagementt
         public string Id { get; private set; }
         public string Name { get; set; }
         public double Salary { get; set; }
+        public string EmployeeType { get; set; }
 
         public Employee(int id)
         {
@@ -27,6 +28,10 @@ namespace EmployeeManagementt
         {
             Salary = salary;
         }
+        public Employee(int id, string name, double salary,string employeetype) : this(id, name,salary)
+        {
+        EmployeeType = employeetype;
+        }
         public void display()
         {
             Console.WriteLine(Id + " " + Name + " " + Salary);
@@ -40,9 +45,9 @@ namespace EmployeeManagementt
             static void Main(string[] args)
             {
 
-                Employee e1 = new Employee(1, "John Doe", 15000);
-                Employee e2 = new Employee(2, "Liam Smith", 20000);
-                Employee e3 = new Employee(3, "Mary James", 15000);
+                Employee e1 = new Employee(1, "John Doe", 15000,"Permanent");
+                Employee e2 = new Employee(2, "Liam Smith", 20000,"Contract");
+                Employee e3 = new Employee(3, "Mary James", 15000,"Contract");
                 e1.display();
                 e2.display();
                 e3.display();
