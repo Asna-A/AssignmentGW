@@ -80,7 +80,6 @@ CREATE TABLE Booking (
     BookingId INT PRIMARY KEY IDENTITY(1,1),
     UserId INT NOT NULL,
     TheatreId INT NOT NULL,
-    MovieId INT NOT NULL,
     ShowId INT NOT NULL,
     NoOfTickets INT NOT NULL,
     Amount DECIMAL(10,2),
