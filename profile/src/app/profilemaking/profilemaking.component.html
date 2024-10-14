@@ -1,0 +1,31 @@
+<form [formGroup]="ProfileForm" (ngSubmit)="onSubmit()">
+<label for="fname">First Name: </label>
+<input id="fname" type="text" formControlName="fname"><br>
+<label for="lname">Last Name: </label>
+<input id="lname" type="text" formControlName="lname"><br>
+<label for="email">Email: </label>
+<input id="email" type="text" formControlName="email"><br>
+<label for="phoneNumber">phoneNumber: </label>
+<input id="phoneNumber" type="text" formControlName="phoneNumber"><br>
+<div formGroupName="address">
+<h2>Address</h2>
+<label for="AddressLine1">Address Line 1: </label>
+<input id="AddressLine1" type="text" formControlName="AddressLine1"><br>
+<label for="AddressLine2">Address Line 2: </label>
+<input id="AddressLine2" type="text" formControlName="AddressLine2"><br>
+<label for="City">City </label>
+<input id="City" type="text" formControlName="City"><br> 
+</div>
+<button type="submit">Submit</button>
+</form>
+
+<div *ngIf="result">
+    <p>Employee Details</p>
+    <p>Name: {{ ProfileForm.get('fname')?.value}} {{ ProfileForm.get('lname')?.value}} </p>
+    <p>Email: {{ ProfileForm.get('email')?.value}} </p>
+    <p>Phone Number: {{ ProfileForm.get('phoneNumber')?.value}} </p>
+    <p>Address Line 1: {{ ProfileForm.get('address.AddressLine1')?.value}} </p>
+    <p>Address Line 2: {{ ProfileForm.get('address.AddressLine2')?.value}} </p>
+    <p>City: {{ ProfileForm.get('address.City')?.value}} </p>
+    <p></p>
+</div>
