@@ -13,16 +13,16 @@ import { ViewItemComponent } from "./view-item/view-item.component";
 export class AppComponent {
   title = 'shoppinglist';
 
-  countvalue: number =0;
+  countValue: number =0;
   items:string[]=[];
   
   deleteItem(index: number) {
     this.items.splice(index,1)
-    this.countvalue=this.items.length;
+    this.countValue=this.items.length;
   }
-  
   addNewItem(newItem:string) {
     this.items.push(newItem);
-    this.countvalue=this.items.length;
+    this.countValue=this.items.length;
   }
+  
 }
