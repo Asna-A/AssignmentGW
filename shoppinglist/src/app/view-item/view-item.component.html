@@ -1,6 +1,6 @@
-<ul>
-<li *ngFor="let item of items,let index=index">
-    {{item}}
-    <button type="button" class="deleteButton" (click)="deleteItem(index)">Delete item</button>
-</li>
+ @for (item of items; track item; let index = $index){
+ <ul>
+ <li>{{item}}
+ <button type="button" class="deleteButton" (click)="deleteItem($index)">Delete item</button></li>
 </ul>
+ }
