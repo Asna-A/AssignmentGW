@@ -1,19 +1,16 @@
+create table Users(UserId int primary key identity(1,1),
+Name varchar(50),
+PhoneNumber nvarchar(15),
+Email varchar(254) unique);
+
 create table Addresses(AddressId int primary key identity(1,1),
 StreetAddress VARCHAR(100),
 City VARCHAR(50),
 State VARCHAR(50),
 PostalCode VARCHAR(10),
-Country VARCHAR(50));
-
-
-
-
-create table Users(UserId int primary key identity(1,1),
-Name varchar(50),
-PhoneNumber nvarchar(15),
-Email varchar(254) unique,
-AddressId int not null,
-foreign key(AddressId) references Addresses(AddressId));
+Country VARCHAR(50),
+UserId int not null,
+foreign key(UserId) references User(UserId));
 
 create table Categories(CategoryId int primary key identity(1,1),
 CategoryName varchar(50) not null);
