@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment7</title>
+</head>
+<style>
+    li{
+        margin: 7px;
+    }
+    .deleteButton{
+        margin-left: 10px;
+    }
+</style>
+<body>
+    <h1>My Shopping List</h1>
+    <form>
+    <label>Enter a new item:</label>
+    <input id="item">
+    <button type="button" onclick="additem()">Add item</button>
+    </form>
+    <ul id="ul"></ul>
+    <script>
+        function additem()
+        {
+            
+            let name=document.getElementById("item").value;
+            let ul_element=document.getElementById("ul");
+            let li_element=document.createElement("li");
+            li_element.innerHTML=name;
+            let delete_button=document.createElement("button");
+            delete_button.className="deleteButton"
+            delete_button.innerHTML="Delete";
+            delete_button.onclick=function()
+            {
+                ul_element.removeChild(li_element)
+                
+            }
+            ul_element.appendChild(li_element); 
+            li_element.appendChild(delete_button);
+            document.getElementById("item").value=""
+            document.getElementById("item").focus();
+        }
+        
+    </script>
+
+</body>
+</html>
