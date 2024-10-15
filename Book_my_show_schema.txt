@@ -1,0 +1,119 @@
+CREATE TABLE Users (
+    UserId INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(50) NOT NULL,
+    PhoneNumber NVARCHAR(15),
+    Email VARCHAR(254) UNIQUE,
+    Password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Genres (
+    GenreId INT PRIMARY KEY IDENTITY(1,1),
+    GenreName VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE Languages (
+    LanguageId INT PRIMARY KEY IDENTITY(1,1),
+    LanguageName VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE Movies (
+    MovieId INT PRIMARY KEY IDENTITY(1,1),
+    MovieName VARCHAR(50) NOT NULL,
+    Duration TIME NOT NULL,
+    ReleaseDate DATE NOT NULL
+);
+
+CREATE TABLE MovieGenres (
+    MovieId INT NOT NULL,
+    GenreId INT NOT NULL,
+    PRIMARY KEY (MovieId, GenreId),
+    FOREIGN KEY (MovieId) REFERENCES Movies(MovieId),
+    FOREIGN KEY (GenreId) REFERENCES Genres(GenreId)
+);
+
+CREATE TABLE MovieLanguages (
+    MovieId INT NOT NULL,
+    LanguageId INT NOT NULL,
+    PRIMARY KEY (MovieId, LanguageId),
+    FOREIGN KEY (MovieId) REFERENCES Movies(MovieId),
+    FOREIGN KEY (LanguageId) REFERENCES Languages(LanguageId)
+);
+
+CREATE TABLE Addresses (
+    AddressId INT PRIMARY KEY IDENTITY(1,1),
+    StreetAddress VARCHAR(100),
+    City VARCHAR(50),
+    State VARCHAR(50),
+    PostalCode VARCHAR(10),
+    Country VARCHAR(50)
+);
+
+CREATE TABLE Theatres (
+    TheatreId INT PRIMARY KEY IDENTITY(1,1),
+    TheatreName VARCHAR(20) NOT NULL,
+    AddressId INT NOT NULL,
+    TotalScreens INT NOT NULL,
+    FOREIGN KEY (AddressId) REFERENCES Addresses(AddressId)
+);
+
+CREATE TABLE Screens (
+    ScreenId INT PRIMARY KEY IDENTITY(1,1),
+    ScreenNumber NVARCHAR(10) NOT NULL, 
+    Capacity INT NOT NULL,        
+    ScreenType NVARCHAR(50), 
+    TheatreId INT NOT NULL,
+    TotalShows INT NOT NULL,
+    FOREIGN KEY (TheatreId) REFERENCES Theatres(TheatreId)
+);
+
+CREATE TABLE Shows (
+    ShowId INT PRIMARY KEY IDENTITY(1,1),
+    ScreenId INT NOT NULL,                           
+    MovieId INT NOT NULL,                            
+    ShowTime DATETIME NOT NULL,                                        
+    SeatsAvailable INT NOT NULL,  
+    FOREIGN KEY (MovieId) REFERENCES Movies(MovieId),
+    FOREIGN KEY (ScreenId) REFERENCES Screens(ScreenId)
+);
+
+CREATE TABLE Booking (
+    BookingId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT NOT NULL,
+    TheatreId INT NOT NULL,
+    ShowId INT NOT NULL,
+    NoOfTickets INT NOT NULL,
+    Amount DECIMAL(10,2),
+    PaymentId INT NOT NULL,
+    FOREIGN KEY (TheatreId) REFERENCES Theatres(TheatreId),
+    FOREIGN KEY (MovieId) REFERENCES Movies(MovieId),
+    FOREIGN KEY (ShowId) REFERENCES Shows(ShowId),
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)
+);
+
+CREATE TABLE Seats (
+    SeatId INT PRIMARY KEY IDENTITY(1,1),         
+    ScreenId INT NOT NULL,                          
+    SeatNumber NVARCHAR(10) NOT NULL,              
+    SeatType NVARCHAR(50),                          
+    IsAvailable BIT NOT NULL DEFAULT 1,  
+    SeatPrice DECIMAL(10,2),
+    FOREIGN KEY (ScreenId) REFERENCES Screens(ScreenId)
+);
+
+CREATE TABLE BookingSeats (
+    BookingSeatId INT PRIMARY KEY IDENTITY(1,1),
+    BookingId INT NOT NULL,
+    SeatId INT NOT NULL,
+    FOREIGN KEY (BookingId) REFERENCES Booking(BookingId),
+    FOREIGN KEY (SeatId) REFERENCES Seats(SeatId)
+);
+
+CREATE TABLE Payments (
+    PaymentId INT PRIMARY KEY IDENTITY(1,1),
+    BookingId INT NOT NULL,
+    PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+    Amount DECIMAL(10, 2) NOT NULL,
+    PaymentMethod VARCHAR(50) NOT NULL, 
+    PaymentStatus VARCHAR(20) NOT NULL, 
+    FOREIGN KEY (BookingId) REFERENCES Booking(BookingId)
+);
