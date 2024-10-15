@@ -1,0 +1,353 @@
+	Extract the middle 3 characters from the string 'ABCDEFG'.
+
+declare @string varchar(7)='ABCDEFG'
+declare @lengt int =((len(@string)-2)/2)+1
+select substring(@string,@lengt,3);
+
+ 	From a table 'Employees' with a column 'FullName', write a query to extract the first name 
+
+select left(fullname,CHARINDEX(' ',fullname)) as firstname from employees
+
+
+	Extract the first 5 characters from the string 'SQL Server 2022'.
+
+declare @string varchar(15)='SQL Server 2022'
+select substring(@string,1,5);
+
+	From a 'Products' table with a 'ProductCode' column, write a query to get the first 3 characters of each product code.
+
+select SUBSTRING(ProductCode,1,3) as Productcode@3 from Products
+
+	Extract the last 4 characters from the string 'ABCDEFGHIJKL'.
+
+declare @string varchar(15)='ABCDEFGHIJKL'
+select Right(@string,4);
+
+ 	From an 'Orders' table with an 'OrderID' column (format: ORD-YYYY-NNNN), write a query to extract just the numeric portion at the end.
+
+select right(orderid,CHARINDEX('-',reverse(orderid))-1) from orders;
+
+	Write a query to find the length of the string 'SQL Server Functions'.
+
+declare @string varchar(20)='SQL Server Functions'
+
+select len(@string);
+
+	From a 'Customers' table, find customers whose names are longer than 20 characters.
+
+select * from customers where len(CustomerName)>20
+
+ 	Compare the results of character count and byte count for the string 'SQL Server' with a trailing space.
+
+//character count do not count trailing spaces
+
+declare @string varchar(15)='SQL Server  '
+select len(@string) 
+
+//byte count, counts trailing spaces
+
+declare @string varchar(15)='SQL Server  '
+select datalength(@string) 
+
+	Write a query to find the byte count of an empty string and explain the result.
+
+declare @string varchar(15)=''
+select datalength(@string)
+
+//since there are no characters to count ,datalength is zero
+
+ 	Find the position of 'Server' in the string 'Microsoft SQL Server'
+
+declare @string varchar(25)='Microsoft SQL Server'
+declare @word varchar(15)='Server'
+select CHARINDEX(@word,@string)
+
+	From an 'Emails' table, write a query to extract the domain name from email addresses.
+
+select * from email
+select right(email,len(email)-CHARINDEX('@',email)) as domain from email 
+
+	Find the position of the first number in the string 'ABC123DEF456'.
+
+DECLARE @text VARCHAR(MAX) = 'ABC123DEF456';
+SELECT PATINDEX('%[0-9]%', @text) AS Position;
+
+	Write a query to find all product names from a 'Products' table that contain a number.
+
+select ProductName from Products where patindex('%[0-9]%',ProductName)>0
+
+	Join the strings 'SQL', 'Server', and '2022' with spaces between them.
+
+declare @string1 varchar(20)='SQL'
+declare @string2 varchar(20)='Server'
+declare @string3 varchar(20)='2022'
+declare @string4 varchar(50)=@string1+' '+@string2+' '+@string3
+select @string4 as concatenated_string
+
+	From 'Employees' table with 'FirstName' and 'LastName' columns, create a 'FullName' column.
+
+alter table Employees
+add Fullname varchar(50)
+update Employees 
+set Fullname = FirstName+' '+LastName
+
+	Join the array ('SQL', 'Server', '2022') with a hyphen as the separator.
+
+select CONCAT_WS('-','SQL', 'Server', '2022') as joined
+
+From an 'Addresses' table, combine 'Street', 'City', 'State', and 'ZIP' columns into a single address string.
+
+alter table Addresses
+add  address varchar(50)
+update Addresses 
+set address = concat_ws(' ','Street','City','State','ZIP')
+
+	Change all occurrences of 'a' to 'e' in the string 'database management'.
+
+declare @string1 varchar(20)='database management'
+select replace(@string1,'a','e') as replaced_string
+
+	From a 'Products' table, write a query to replace all spaces in product names with underscores
+
+update products
+set productname=REPLACE(ProductName,' ','-') from Products
+
+Create a string of 10 asterisks (*).
+
+SELECT REPLICATE('*', 10) as stringg;
+
+ Write a query to pad all product codes in a 'Products' table to a length of 10 characters with leading zeros.
+
+update Products
+set ProductCode=REPLICATE('0',10-len(ProductCode))+ProductCode
+
+	Insert the string 'New ' at the beginning of 'York City'.
+
+declare @string1 Varchar(30)='York City'
+declare @string2 Varchar(30)='New'
+declare @string3 Varchar(30)=@string2+' '+@string1
+select @string3
+
+	 From an 'Emails' table, mask the username part of email addresses, showing only the first and last characters.
+
+select * from email
+select left(email,1)+replicate('*',len(left(email,CHARINDEX('@',email)))-3)+right(email,len(email)-CHARINDEX('@',email)+2) from email
+
+	Convert the string 'sql server' to uppercase.
+
+select upper('sql server')
+
+	Write a query to convert all customer names in a 'Customers' table to uppercase.
+
+update customers
+set CustomerName=upper(CustomerName)
+
+	Convert the string 'SQL SERVER' to lowercase.
+
+select lower('SQL SERVER')
+
+	From a 'Products' table, write a query to convert all product descriptions to lowercase.
+
+update Products
+set product_descriptions=lower(product_descriptions)
+
+
+	Remove trailing spaces from the string 'SQL Server    '.
+
+select RTRIM('SQL Server    ')
+
+	Write a query to remove trailing spaces from all email addresses in an 'Employees' table.
+
+update employees
+set email=RTRIM(email) 
+	
+Remove leading spaces from the string '   SQL Server'.
+
+select LTRIM('   SQL Server')
+
+From a 'Comments' table, write a query to remove leading spaces from all comment texts.
+
+update Comments
+set comments=LTRIM(comments) 
+
+	Display the current date in the format 'dd-MM-yyyy'.
+
+declare @date datetime=getdate()
+select format(@date,'dd-MM-yyyy')
+
+	From an 'Orders' table with an 'OrderTotal' column, display the total as a currency with 2 decimal places.
+
+SELECT FORMAT(ordertotal, 'C2', 'en-US') AS CurrencyFormatted from orders;
+
+	Separate the string 'apple,banana,cherry' into individual fruits.
+
+select value as fruits from string_split('apple,banana,cherry',',');
+
+	From a 'Skills' table with a 'SkillList' column containing comma-separated skills, write a query to create a row for each individual skill.
+
+select * from skill cross apply string_split(skill_list,',')
+
+Date and Time Functions
+
+	Write a query to display the current date and time.
+
+select getdate() as datetime
+
+	From an 'Orders' table, find all orders placed in the last 24 hours.
+
+SELECT * FROM Orders WHERE DATEDIFF(HOUR, Order_placed_time, GETDATE()) <= 24;
+
+	Display the current UTC date and time.
+
+select GETUTCDATE() as utcdatetime
+
+	Write a query to show the time difference between local time and UTC time.
+
+SELECT dateDIFF(MINUTE, GETUTCDATE(), GETDATE());
+
+	Convert the current date and time to 'Pacific Standard Time'.
+
+SELECT GETDATE() at time zone 'UTC' at time zone 'Pacific standard time' as pacific_std_time;
+
+	From a 'Flights' table with a 'DepartureTime' column in UTC, convert all departure times to 'Eastern Standard Time'.
+
+update flights
+set departure=departure at time zone 'Eastern Standard Time'
+
+	Add 3 months to the current date.
+
+select dateADD(MONTH,3,GETDATE()) as added_date
+
+	From an 'Employees' table, write a query to calculate each employee's retirement date (65 years from their 'DateOfBirth').
+
+select DATEADD(year,65,dateofbirth) as retirement_date from employees
+
+	Calculate the number of days between '2023-01-01' and '2023-12-31'.
+
+select DATEdiff(day,'2023-01-01','2023-12-31') 
+
+	From an 'Orders' table, find the average number of days between order date and ship date.
+
+select avg(datediff(day,orderdate,shipdate)) from orders
+
+	Extract the month number from the date '2023-09-15'.
+
+select month('2023-09-15') as monthnumber
+
+	From a 'Sales' table, write a query to group total sales by the quarter of the sale date.
+
+select datepart(quarter,saledate),count(saleid) from sales group by datepart(Quarter,saledate)
+
+	Extract the year from the current date.
+
+select year(getdate()) as year
+
+	From an 'Employees' table, find all employees hired in the year 2022.
+
+select * from employees where year(hiredate)='2022'
+
+	Check if '2023-02-30' is a valid date.
+
+select case when ISDATE('2023-02-30')=0 then 'invalid'
+else 'valid'		
+END as datestatus
+
+	Write a query to find all rows in a 'UserInputs' table where the 'EnteredDate' column contains invalid dates.
+
+select entereddate,
+case when ISDATE(convert(varchar,entereddate,120))=0 then 'invalid'
+else 'valid'		
+END as datestatus from userinputs
+
+	Find the last day of the current month.
+
+select EOMONTH(getdate()) as lastday
+
+	From a 'Subscriptions' table, write a query to extend all subscription end dates to the end of their respective months.
+
+update  subscriptions 
+set subdate=EOMONTH(subdate)
+
+	Display the current date and time.
+
+select getdate() as datetime
+
+	Compare the results of two different methods to get the current timestamp - are they always the same?
+
+SELECT 
+    SYSDATETIME() AS CurrentTimestampWithPrecision, //higher precision than getdate
+    GETDATE() AS CurrentTimestamp;
+
+	Get the current date and time with higher precision than standard methods.
+
+select sysdatetime() as with_precision
+
+	Write a query to insert the current high-precision timestamp into a 'Logs' table.
+
+create table logs(crnt_timestamp_with_precision datetime2)
+insert into logs values(SYSDATETIME())
+
+	Display the current UTC date and time with high precision.
+
+select sysutcdatetime() as utc_with_precision
+
+	Calculate the difference in microseconds between the current local time and UTC time.
+
+select DATEdiff(MICROSECOND,GETDATE(),GETUTCDATE()) as diff_in_microsec
+
+	Get the current date, time, and time zone offset.
+
+select sysDATETIMEOFFSET() as date_time_offset
+
+	From a 'GlobalEvents' table, convert all event times to include time zone offset information.
+
+select eventtime,eventtime at time zone 'UTC' as utc_event_time from globalevents
+
+	Extract the month number from the date '2023-12-25'.
+
+select month('2023-12-25') as monthnumber
+
+	From a 'Sales' table, find the total sales for each month of the previous year.
+
+select month(SaleDate) as month,count(saleid) as count from sales  where DATEDIFF(year,saledate,getdate())=1 group by month(saledate)
+
+	Extract the day of the month from '2023-03-15'.
+
+select datename(weekday,'2023-03-15') as dayname
+
+	Write a query to find all orders from an 'Orders' table that were placed on the 15th day of any month.
+
+select * from orders where day(orderdate)=15
+
+	Get the name of the month for the date '2023-09-01'.
+
+select datename(month,'2023-09-01') as monthname
+
+	From an 'Events' table, write a query to display the day of the week (in words) for each event date.
+
+select eventdate,datename(weekday,eventdate) as dayname from events
+
+	Create a date for Christmas Day 2023.
+
+declare @christmas date 
+set @christmas=cast('2023-12-25' as date)
+select @christmas as christmas
+
+	Write a query to convert separate year, month, and day columns from a 'Dates' table into a single DATE column.
+
+ update dates
+ set datecolumn=DATEFROMPARTS(year,month,day)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
