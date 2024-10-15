@@ -1,0 +1,13 @@
+<h1>Question7</h1>
+<h1>My Shopping List</h1>
+<form (ngSubmit)="additem()">
+<label>Enter a new item:</label>
+<input type="text" [(ngModel)]="newItem" name="newItem">
+<button type="submit">Add item</button>
+</form>
+<ul id="ul">
+    <li *ngFor="let item of items,let index=index">
+        {{item}}
+        <button type="button" class="deleteButton" (click)="deletItem(index)">Delete item</button>
+    </li>
+</ul>

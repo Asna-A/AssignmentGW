@@ -1,0 +1,9 @@
+<h1>Question6</h1>
+<form (ngSubmit)="checkLeapYear()">
+    <input type="number" [(ngModel)]="year" placeholder="Enter a year" name="year"/>
+    <button type="submit">check</button>
+</form>
+<div *ngIf="checked">
+    <p>{{ year }} is {{ isLeapYear ? '' : 'not ' }}a leap year</p>
+
+ </div>
