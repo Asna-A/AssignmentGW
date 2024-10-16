@@ -36,7 +36,7 @@
 </div>
 <label for="">Project</label>
 <select formControlName="project">
-    <option *ngFor="let item of projects">{{item.name| activeProject:item.isActive}}</option>        
+     <option *ngFor="let item of projects|activeProject:true">{{item.name}}</option>         
 </select>
 <button type="submit" [disabled]="!ProfileForm.valid">Submit</button>
 
