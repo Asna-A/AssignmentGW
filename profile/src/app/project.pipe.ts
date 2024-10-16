@@ -6,9 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ActiveProjectPipe implements PipeTransform {
 
-  transform(value: string, isActive: boolean): any {
-    if(isActive==true)
-    return value;
+  transform(value: any[], isActive: boolean): any {
+
+    if(value)
+      return value.filter((item:any)=>item.isActive==true)
   }
 
 }
