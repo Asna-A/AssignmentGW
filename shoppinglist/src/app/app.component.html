@@ -1,0 +1,3 @@
+<h1>My Shopping List</h1>
+<app-add-item (newItemEvent)="addNewItem($event)" [count]="countValue"></app-add-item>
+<app-view-item (deleteItemEvent)="deleteItem($event)" [items]="items"></app-view-item>
