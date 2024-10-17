@@ -54,11 +54,12 @@
     
     <div *ngIf="result">
         <p>Employee Details</p>
-        <p appBgColor>Name: {{ ProfileForm.get('fname')?.value| uppercase}} {{ ProfileForm.get('lname')?.value | uppercase}} </p>
-        <p *ngIf="this.ProfileForm.get('email')?.value?.endsWith('@gmail.com')">Email:{{ ProfileForm.get('email')?.value}} </p>
-        <p>Phone Number: {{ ProfileForm.get('phoneNumber')?.value}} </p>
-        <p>Address Line 1: {{ ProfileForm.get('address.AddressLine1')?.value}} </p>
-        <p>Address Line 2: {{ ProfileForm.get('address.AddressLine2')?.value}} </p>
-        <p>City: {{ ProfileForm.get('address.City')?.value}} </p>
-        <p>Project:{{this.ProfileForm.get('project')?.value}}</p>  
+        <p appBgColor>Name: {{ employeeDetails.fname| uppercase}} {{ employeeDetails.lname | uppercase}} </p>
+        <!-- <p *ngIf="this.ProfileForm.get('email')?.value?.endsWith('@gmail.com')">Email:{{ ProfileForm.get('email')?.value}} </p> -->
+        <p *appEmail="employeeDetails.email">Email:{{ employeeDetails.email}} </p>
+        <p>Phone Number: {{ employeeDetails.phoneNumber}} </p>
+        <p>Address Line 1: {{ employeeDetails.AddressLine1}} </p>
+        <p>Address Line 2: {{ employeeDetails.AddressLine2}} </p>
+        <p>City: {{employeeDetails.City}} </p>
+        <p>Project:{{employeeDetails.project}}</p>  
     </div>

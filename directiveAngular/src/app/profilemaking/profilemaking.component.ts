@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActiveProjectPipe } from '../project.pipe';
-import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {  FormControl, FormGroup,ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BgColorDirective } from '../bg-color.directive';
+import { EmailDirective } from '../email.directive';
 
 
 interface  Address {
@@ -23,7 +24,7 @@ interface ProfileForm {
 @Component({
   selector: 'app-profilemaking',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,ActiveProjectPipe,NgSelectModule,BgColorDirective],
+  imports: [ReactiveFormsModule,CommonModule,ActiveProjectPipe,NgSelectModule,BgColorDirective,EmailDirective],
   templateUrl: './profilemaking.component.html',
   styleUrl: './profilemaking.component.scss'
 })
@@ -56,15 +57,16 @@ export class ProfilemakingComponent {
     { name: "Sterling Shopping Complex", isActive: false }
   ]
   
-  employee:ProfileForm|null=null;
+  
   result:boolean|false=false;
-c: any;
+  employeeDetails:any
   
   onSubmit()
   {
     if(this.ProfileForm.valid)
     {
-      this.result=true  
+      this.result=true 
+      this.employeeDetails=this.ProfileForm.value 
     }
     else
     {
