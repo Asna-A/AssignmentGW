@@ -8,7 +8,7 @@ import { ViewContainerRef } from '@angular/core';
 export class EmailDirective {
   
   
-  constructor(private view:ViewContainerRef,private tref:TemplateRef<any>) {
+  constructor(private view:ViewContainerRef,private tref:TemplateRef<string>) {
    
   }
   
