@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActiveProjectPipe } from '../project.pipe';
 import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 interface  Address {
   AddressLine1: FormControl<string|null>;
@@ -20,7 +21,7 @@ interface ProfileForm {
 @Component({
   selector: 'app-profilemaking',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,ActiveProjectPipe],
+  imports: [ReactiveFormsModule,CommonModule,ActiveProjectPipe,NgSelectModule],
   templateUrl: './profilemaking.component.html',
   styleUrl: './profilemaking.component.scss'
 })
@@ -68,5 +69,3 @@ export class ProfilemakingComponent {
     }
   }
 }
-
-
