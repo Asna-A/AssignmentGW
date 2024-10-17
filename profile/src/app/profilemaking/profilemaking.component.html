@@ -16,7 +16,7 @@
         *ngIf="ProfileForm.controls.email.invalid && (ProfileForm.controls.email.touched||ProfileForm.controls.email.dirty) && !ProfileForm.controls.email.errors?.['required']">Email is invalid</div>
     <label for="phoneNumber">phoneNumber: </label>
     <input id="phoneNumber" type="text" formControlName="phoneNumber"><br>
-    <div *ngIf="ProfileForm.controls.phoneNumber.errors?.['required'] && (ProfileForm.controls.email.touched||ProfileForm.controls.email.dirty)">
+    <div *ngIf="ProfileForm.controls.phoneNumber.errors?.['required'] && (ProfileForm.controls.phoneNumber.touched||ProfileForm.controls.phoneNumber.dirty)">
         phoneNumber is required.
     </div>
     <div *ngIf="ProfileForm.controls.phoneNumber.errors?.['maxlength']">
