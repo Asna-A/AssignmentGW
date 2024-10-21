@@ -1,0 +1,77 @@
+
+create table Student(StudentId int primary key identity(1,1),
+Name varchar(50) not null,
+PhoneNumber nvarchar(15),
+Email varchar(254) unique);
+
+create table Instructor(InstructorId int primary key identity(1,1),
+Name varchar(50) not null,
+PhoneNumber nvarchar(15),
+Email varchar(254) unique);
+
+create table Courses(CourseId int primary key identity(1,1),
+Title varchar(50) not null,
+Description Text,
+NoOfLessons int,
+InstructorId int not null,
+foreign key(InstructorId) references Instructor(InstructorId),
+);
+
+create table Lessons(LessonId int primary key identity(1,1),
+Title varchar(50),
+Description Text,
+CourseId int,
+foreign key(CourseId) references Courses(CourseId));
+
+create table Review(ReviewId int primary key identity(1,1),
+ReviewType varchar(50));
+
+create table Assignments(AssignmentId int primary key identity(1,1),
+CourseId int,
+ReviewId int,
+foreign key(CourseId) references Courses(CourseId),
+foreign key(ReviewId) references Review(ReviewId));
+
+create table Quizes(QuizId int primary key identity(1,1),
+CourseId int,
+foreign key(CourseId) references Courses(CourseId));
+
+Create table StudentLesson(StudentLessonId int primary key identity(1,1),
+StudentId int not null,
+LessonId int not null,
+IsCompleted Bit Default 0,
+Score decimal(10,2),
+foreign key(LessonId) references Lessons(LessonId));
+
+Create table StudentQuiz(StudentQuizId int primary key identity(1,1),
+StudentId int not null,
+QuizId int not null,
+IsCompleted Bit Default 0,
+Score decimal(10,2),
+foreign key(QuizId) references Quizes(QuizId));
+
+Create table StudentAssignment(StudentAssignmentId int primary key identity(1,1),
+StudentId int not null,
+AssignmentId int not null,
+IsCompleted Bit Default 0,
+Score decimal(10,2),
+foreign key(AssignmentId) references Assignments(AssignmentId));
+
+create table Enrolled(
+CourseId int,
+StudentId int,
+primary key(CourseId,StudentId), 
+CourseProgress Decimal(5,2),
+foreign key(CourseId) references Courses(CourseId),
+foreign key(StudentId) references Student(StudentId)
+);
+
+create table Certificates(CertificateId int primary key identity(1,1),
+CourseId int not null,
+StudentId int not null,
+PercentageScored Decimal(5,2),
+IssuedDate DateTime,
+foreign key(StudentId) references Student(StudentId),
+foreign key(CourseId) references Courses(CourseId));
+
+
