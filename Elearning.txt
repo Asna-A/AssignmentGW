@@ -40,21 +40,25 @@ Create table StudentLesson(StudentLessonId int primary key identity(1,1),
 StudentId int not null,
 LessonId int not null,
 IsCompleted Bit Default 0,
-foreign key(LessonId) references Lessons(LessonId));
+foreign key(LessonId) references Lessons(LessonId),
+foreign key(StudentId) references Student(StudentId)
+);
 
 Create table StudentQuiz(StudentQuizId int primary key identity(1,1),
 StudentId int not null,
 QuizId int not null,
 IsCompleted Bit Default 0,
 Score decimal(10,2),
-foreign key(QuizId) references Quizes(QuizId));
+foreign key(QuizId) references Quizes(QuizId),
+foreign key(StudentId) references Student(StudentId));
 
 Create table StudentAssignment(StudentAssignmentId int primary key identity(1,1),
 StudentId int not null,
 AssignmentId int not null,
 IsCompleted Bit Default 0,
 Score decimal(10,2),
-foreign key(AssignmentId) references Assignments(AssignmentId));
+foreign key(AssignmentId) references Assignments(AssignmentId),
+foreign key(StudentId) references Student(StudentId));
 
 create table Enrolled(
 CourseId int,
