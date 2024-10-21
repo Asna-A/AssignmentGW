@@ -72,9 +72,10 @@ foreign key(CourseId) references Courses(CourseId),
 foreign key(StudentId) references Student(StudentId)
 );
 
-create table Certificates(CertificateId int primary key identity(1,1),
+create table Certificates(
 CourseId int not null,
 StudentId int not null,
+primary key(CourseId,StudentId),
 PercentageScored Decimal(5,2),
 IssuedDate DateTime,
 foreign key(StudentId) references Student(StudentId),
