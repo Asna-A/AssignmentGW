@@ -36,25 +36,28 @@ create table Quizes(QuizId int primary key identity(1,1),
 CourseId int,
 foreign key(CourseId) references Courses(CourseId));
 
-Create table StudentLesson(StudentLessonId int primary key identity(1,1),
+Create table StudentLesson(
 StudentId int not null,
 LessonId int not null,
+primary key(StudentId,LessonId),
 IsCompleted Bit Default 0,
 foreign key(LessonId) references Lessons(LessonId),
 foreign key(StudentId) references Student(StudentId)
 );
 
-Create table StudentQuiz(StudentQuizId int primary key identity(1,1),
+Create table StudentQuiz(
 StudentId int not null,
 QuizId int not null,
+primary key(StudentId,QuizId),
 IsCompleted Bit Default 0,
 Score decimal(10,2),
 foreign key(QuizId) references Quizes(QuizId),
 foreign key(StudentId) references Student(StudentId));
 
-Create table StudentAssignment(StudentAssignmentId int primary key identity(1,1),
+Create table StudentAssignment(
 StudentId int not null,
 AssignmentId int not null,
+primary key(StudentId,AssignmentId),
 IsCompleted Bit Default 0,
 Score decimal(10,2),
 foreign key(AssignmentId) references Assignments(AssignmentId),
