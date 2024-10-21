@@ -40,7 +40,6 @@ Create table StudentLesson(StudentLessonId int primary key identity(1,1),
 StudentId int not null,
 LessonId int not null,
 IsCompleted Bit Default 0,
-Score decimal(10,2),
 foreign key(LessonId) references Lessons(LessonId));
 
 Create table StudentQuiz(StudentQuizId int primary key identity(1,1),
