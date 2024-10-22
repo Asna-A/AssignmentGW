@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddItemComponent {
   newItem: string='';
-  countvalue!:number;
+  countvalue:number=0;
   
   constructor(private AddItemService:AddNewItemService) {}
 
