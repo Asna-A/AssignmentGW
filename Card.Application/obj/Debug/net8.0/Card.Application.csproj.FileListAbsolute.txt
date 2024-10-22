@@ -1,0 +1,17 @@
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Application.deps.json
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Application.dll
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Application.pdb
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.AssemblyInfoInputs.cache
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.AssemblyInfo.cs
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.csproj.CoreCompileInputs.cache
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.dll
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\refint\Card.Application.dll
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.pdb
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\ref\Card.Application.dll
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Domain.dll
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Infrastructure.dll
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Domain.pdb
+C:\Users\asna.a\source\repos\Card.Application\bin\Debug\net8.0\Card.Infrastructure.pdb
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.Application.csproj.AssemblyReference.cache
+C:\Users\asna.a\source\repos\Card.Application\obj\Debug\net8.0\Card.App.9B0E6979.Up2Date

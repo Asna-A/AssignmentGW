@@ -1,0 +1,11 @@
+C:\Users\asna.a\source\repos\Card.Domain\bin\Debug\net8.0\Card.Domain.deps.json
+C:\Users\asna.a\source\repos\Card.Domain\bin\Debug\net8.0\Card.Domain.dll
+C:\Users\asna.a\source\repos\Card.Domain\bin\Debug\net8.0\Card.Domain.pdb
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\Card.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\Card.Domain.AssemblyInfoInputs.cache
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\Card.Domain.AssemblyInfo.cs
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\Card.Domain.csproj.CoreCompileInputs.cache
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\Card.Domain.dll
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\refint\Card.Domain.dll
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\Card.Domain.pdb
+C:\Users\asna.a\source\repos\Card.Domain\obj\Debug\net8.0\ref\Card.Domain.dll

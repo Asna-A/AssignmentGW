@@ -1,0 +1,17 @@
+C:\Users\asna.a\source\repos\Card.Infrastructure\bin\Debug\net8.0\Card.Infrastructure.deps.json
+C:\Users\asna.a\source\repos\Card.Infrastructure\bin\Debug\net8.0\Card.Infrastructure.runtimeconfig.json
+C:\Users\asna.a\source\repos\Card.Infrastructure\bin\Debug\net8.0\Card.Infrastructure.dll
+C:\Users\asna.a\source\repos\Card.Infrastructure\bin\Debug\net8.0\Card.Infrastructure.pdb
+C:\Users\asna.a\source\repos\Card.Infrastructure\bin\Debug\net8.0\Card.Domain.dll
+C:\Users\asna.a\source\repos\Card.Infrastructure\bin\Debug\net8.0\Card.Domain.pdb
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.AssemblyInfo.cs
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Inf.B30E4763.Up2Date
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.dll
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\refint\Card.Infrastructure.dll
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.pdb
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\Card.Infrastructure.genruntimeconfig.cache
+C:\Users\asna.a\source\repos\Card.Infrastructure\obj\Debug\net8.0\ref\Card.Infrastructure.dll
