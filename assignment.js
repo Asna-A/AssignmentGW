@@ -38,7 +38,7 @@ var user=[
   ]
   
 // List the students whose department is computer science.
-var computer_science_Students=user.filter(x=>x.Department==="Computer Science").map(x=>x.FirstName+ " "+x.LastName)
+var computer_science_students=user.filter(x=>x.Department==="Computer Science").map(x=>x.FirstName+ " "+x.LastName)
 console.log("computer scinece students: "+computer_science_Students)
 
 //List the first name of students whose age is greater than  21
@@ -46,7 +46,7 @@ var age_greater_than_21=user.filter(x=>x.Age>21).map(x=>x.FirstName)
 console.log("age_greater_than_21: "+age_greater_than_21)
 
 //Check whether a student having a first name as Robert is present in the Computer Science Department. The result should be in boolean type
-var Robert_cs=user.some(x=>x.FirstName==="Robert" && x.Department==="Computer Science")
+var robert_cs=user.some(x=>x.FirstName==="Robert" && x.Department==="Computer Science")
 console.log(Robert_cs)
 
 //Check whether there is any student whose age is greater than 23 is studying in the Maths department.The result should be in boolean type
@@ -99,15 +99,15 @@ var movie_2022=movie.filter(x=>new Date(x.ReleaseDate).getFullYear()===2022).map
 console.log(movie_2022)
 
 //List the movie names released in the year 2023 where the actor is William Davis.
-var movie_2023_William_Davis=movie.filter(x=>new Date(x.ReleaseDate).getFullYear()===2023 && x.ActorName==="William Davis").map(x=>x.MovieName)
+var movie_2023_william_davis=movie.filter(x=>new Date(x.ReleaseDate).getFullYear()===2023 && x.ActorName==="William Davis").map(x=>x.MovieName)
 console.log(movie_2023_William_Davis)
 
 //Retrieve the Actor name and release date of the movie “The Last Stand”
-var The_Last_Stand=movie.filter(x=>x.MovieName==="The Last Stand").map(x=>({Actor:x.ActorName,ReleaseDate:x.ReleaseDate}))
+var the_last_stand=movie.filter(x=>x.MovieName==="The Last Stand").map(x=>({Actor:x.ActorName,ReleaseDate:x.ReleaseDate}))
 console.log(The_Last_Stand)
 
 //Check whether there is any movie in the list with actor name “John Doe”
-var movie_of_John=movie.some(x=>x.ActorName==="John Doe")
+var movie_of_john=movie.some(x=>x.ActorName==="John Doe")
 console.log(movie_of_John)
 
 //Display the count of movies where the actor name is "Sophia Williams"
@@ -130,7 +130,7 @@ movie.push(new_element)
 console.log(movie)
 
 //Check whether there exists any duplicate movie names present in the array
-var movie_Set=new Set();
+var movie_set=new Set();
 movie.forEach(item=>{
     
         movie_Set.add(item.MovieName)
