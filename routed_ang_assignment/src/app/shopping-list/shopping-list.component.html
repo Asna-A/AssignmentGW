@@ -5,9 +5,10 @@
 <input type="text" [(ngModel)]="newItem" name="newItem">
 <button type="submit">Add item</button>
 </form>
+@for (item of items; track item; let index = $index){
 <ul id="ul">
-    <li *ngFor="let item of items,let index=index">
-        {{item}}
-        <button type="button" class="deleteButton" (click)="deletItem(index)">Delete item</button>
-    </li>
+<li> {{item}}
+<button type="button" class="deleteButton" (click)="deletItem(index)">Delete item</button>
+</li>
 </ul>
+}
