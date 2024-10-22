@@ -1,0 +1,124 @@
+create table Customer(CustomerId int primary key identity(1,1),
+Name varchar(50),
+PhoneNumber nvarchar(15),
+Email varchar(254) unique);
+
+create table Addresses(AddressId int primary key identity(1,1),
+StreetAddress VARCHAR(100),
+City VARCHAR(50),
+State VARCHAR(50),
+PostalCode VARCHAR(10),
+Country VARCHAR(50),
+CustomerId int not null,
+foreign key(CustomerId) references Customer(CustomerId));
+
+create table Restaurant(RestaurantId int primary key identity(1,1),
+Name varchar(50),
+PhoneNumber nvarchar(15),
+CuisineType varchar(50));
+
+create table Category(CategoryId int primary key identity(1,1),
+Category varchar(50));
+
+create table MenuItems(MenuItemId int primary key identity(1,1),
+Name varchar(50),
+Description text,
+CategoryId int not null,
+Available BIT NOT NULL DEFAULT 1,
+Price Decimal(10,2),
+RestaurantId int not null,
+foreign key(RestaurantId) references Restaurant(RestaurantId));
+
+create table OrderStatus(OrderStatusId int primary key identity(1,1),
+OrderStatus VARCHAR(20) NOT NULL);
+
+create table OrderDetails(OrderID int primary key identity(1,1),
+CustomerId int not null,
+RestaurantId int not null,
+OrderStatusId int NOT NULL, 
+OrderDate DATETIME NOT NULL DEFAULT GETDATE(),
+PointsEarned int,
+TotalAmount decimal(10,2),
+foreign key(CustomerId) references Customer(CustomerId),
+foreign key(RestaurantId) references Restaurant(RestaurantId),
+foreign key(CustomerId) references Customer(CustomerId),
+foreign key(OrderStatusId) references OrderStatus(OrderStatusId),
+);
+
+create table Promotions(
+Promotionid int primary key identity(1,1),
+PromoCode VARCHAR(50),
+Discount decimal(10,2)
+);
+
+create table CouponRedemption(CouponRedemptionId int primary key identity(1,1),
+OrderId int NOT NULL,
+Promotionid int NOT NULL,
+foreign key(PromotionId) references Promotions(PromotionId),
+foreign key(OrderId) references OrderDetails(OrderId));
+
+create table Reward(RewardId int primary key identity(1,1),
+RewardName varchar(50),
+PointsRequired int);
+
+create table RewardRedemption(RewardRedemptionId int primary key identity(1,1),
+OrderId int NOT NULL,
+RewardId int NOT NULL,
+foreign key(RewardId) references Promotions(PromotionId),
+foreign key(OrderId) references OrderDetails(OrderId));
+
+create table AddOn(AddOnId int primary key identity(1,1),
+AddOnName varchar(20),
+Description text,
+AdditionalPrice decimal(10,2));
+
+create table MenuItemCustomization(MenuItemCustomizationId int primary key identity(1,1),
+AddOnId int,
+foreign key(AddOnId) references AddOn(AddOnId));
+
+create table OrderItemDetails(OrderedItemDetailsId int primary key identity(1,1),
+OrderId int not  null,
+MenuItemId int not null,
+Quantity int not null,
+MenuItemCustomizationId int,
+Amount decimal(10,2) not null,
+RewardId int,
+PromotionId int,
+foreign key(RewardId) references Reward(RewardId),
+foreign key(PromotionId) references Promotions(PromotionId),
+foreign key(MenuItemId) references MenuItems(MenuItemId),
+foreign key(OrderId) references OrderDetails(OrderId),
+);
+
+
+CREATE table DeliveryDriver(
+    DriverId INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(50) NOT NULL,
+    PhoneNumber NVARCHAR(15)
+);
+
+CREATE table Delivery(DeliveryId int PRIMARY KEY IDENTITY(1,1),
+    DriverId INT ,
+    OrderID int,
+	EstimatedDeliveryTime DATETIME NOT NULL DEFAULT GETDATE(),
+	ActualDeliveryTime DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+create table Payments(
+PaymentID INT PRIMARY KEY IDENTITY(1,1),
+DeliveryId INT NOT NULL,
+PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+Amount DECIMAL(10, 2) NOT NULL,
+PaymentMethod VARCHAR(50) NOT NULL, 
+PaymentStatus BIT NOT NULL DEFAULT 0,
+FOREIGN KEY (DeliveryId) REFERENCES Delivery(DeliveryId));
+
+create table Reviews(
+Reviewid int primary key identity(1,1),
+MenuItemId int not null,
+Rating int ,
+Comments text,
+foreign key(MenuItemId) references MenuItems(MenuItemId),
+constraint check_rating check (Rating between 1 and 5));
+
+
