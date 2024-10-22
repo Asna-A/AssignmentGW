@@ -39,7 +39,7 @@ var user=[
   
 // List the students whose department is computer science.
 var computer_science_students=user.filter(x=>x.Department==="Computer Science").map(x=>x.FirstName+ " "+x.LastName)
-console.log("computer scinece students: "+computer_science_Students)
+console.log("computer scinece students: "+computer_science_students)
 
 //List the first name of students whose age is greater than  21
 var age_greater_than_21=user.filter(x=>x.Age>21).map(x=>x.FirstName)
@@ -47,7 +47,7 @@ console.log("age_greater_than_21: "+age_greater_than_21)
 
 //Check whether a student having a first name as Robert is present in the Computer Science Department. The result should be in boolean type
 var robert_cs=user.some(x=>x.FirstName==="Robert" && x.Department==="Computer Science")
-console.log(Robert_cs)
+console.log(robert_cs)
 
 //Check whether there is any student whose age is greater than 23 is studying in the Maths department.The result should be in boolean type
 var maths_23=user.some(x=>x.Age>23 && x.Department==="Mathematics")
@@ -100,15 +100,15 @@ console.log(movie_2022)
 
 //List the movie names released in the year 2023 where the actor is William Davis.
 var movie_2023_william_davis=movie.filter(x=>new Date(x.ReleaseDate).getFullYear()===2023 && x.ActorName==="William Davis").map(x=>x.MovieName)
-console.log(movie_2023_William_Davis)
+console.log(movie_2023_william_davis)
 
 //Retrieve the Actor name and release date of the movie “The Last Stand”
 var the_last_stand=movie.filter(x=>x.MovieName==="The Last Stand").map(x=>({Actor:x.ActorName,ReleaseDate:x.ReleaseDate}))
-console.log(The_Last_Stand)
+console.log(the_last_stand)
 
 //Check whether there is any movie in the list with actor name “John Doe”
 var movie_of_john=movie.some(x=>x.ActorName==="John Doe")
-console.log(movie_of_John)
+console.log(movie_of_john)
 
 //Display the count of movies where the actor name is "Sophia Williams"
 var count_of_movies=movie.filter(x=>x.ActorName==="Sophia Williams").length
@@ -133,11 +133,11 @@ console.log(movie)
 var movie_set=new Set();
 movie.forEach(item=>{
     
-        movie_Set.add(item.MovieName)
+        movie_set.add(item.MovieName)
     
     }
 )
-if(movie.length!=movie_Set.size)
+if(movie.length!=movie_set.size)
 {
     console.log("duplicate element exist")
 }
