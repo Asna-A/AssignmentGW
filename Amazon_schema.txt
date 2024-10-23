@@ -22,12 +22,13 @@ CategoryId int not null,
 Price decimal(10,2) not null,
 foreign key(CategoryId) references Categories(CategoryId));
 
-
+create table OrderStatus(OrderStatusId int primary key identity(1,1),
+OrderStatus VARCHAR(50) NOT NULL)); 
 
 create table Orders(OrderID int primary key identity(1,1),
 UserId int not null,
 TotalAmount decimal(10,2) not null,
-OrderStatus VARCHAR(20) NOT NULL, 
+OrderStatusId int NOT NULL, 
 OrderDate DATETIME NOT NULL DEFAULT GETDATE(),
 foreign key(UserId) references Users(UserId));
 
