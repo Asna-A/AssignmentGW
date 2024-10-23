@@ -35,7 +35,7 @@ export class ProfilemakingComponent {
   fname:new FormControl('',[Validators.required]),
   lname:new FormControl(''),
   email:new FormControl('',[Validators.required,Validators.email,Validators.pattern(('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'))]),
-  phoneNumber:new FormControl(null,[Validators.required,Validators.minLength(10),Validators.pattern(/^\d{1,10}$/)]),
+  phoneNumber:new FormControl(null,[Validators.required,Validators.maxLength(10),Validators.pattern(/^\d{1,10}$/)]),
   address:new FormGroup({
     AddressLine1:new FormControl(''),
     AddressLine2:new FormControl(''),
