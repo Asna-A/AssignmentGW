@@ -8,9 +8,9 @@ import { EmailDirective } from '../email.directive';
 
 
 interface  Address {
-  AddressLine1: FormControl<string|null>;
-  AddressLine2: FormControl<string|null>;
-  City: FormControl<string|null>;
+  addressLine1: FormControl<string|null>;
+  addressLine2: FormControl<string|null>;
+  city: FormControl<string|null>;
 }
 interface ProfileForm {
   fname:FormControl <string|null>;
@@ -31,15 +31,15 @@ interface ProfileForm {
 
 export class ProfilemakingComponent {
  
-  ProfileForm=new FormGroup<ProfileForm>({
+  profileForm=new FormGroup<profileForm>({
   fname:new FormControl('',[Validators.required]),
   lname:new FormControl(''),
   email:new FormControl('',[Validators.required,Validators.email,Validators.pattern(('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'))]),
   phoneNumber:new FormControl(null,[Validators.required,Validators.maxLength(10),Validators.pattern(/^\d{1,10}$/)]),
   address:new FormGroup({
-    AddressLine1:new FormControl(''),
-    AddressLine2:new FormControl(''),
-    City:new FormControl('')
+    addressLine1:new FormControl(''),
+    addressLine2:new FormControl(''),
+    city:new FormControl('')
 
   }), 
   project:new FormControl(''),
@@ -59,19 +59,19 @@ export class ProfilemakingComponent {
   
   
   result:boolean|false=false;
-  employeeDetails:FormGroup<ProfileForm>|null=null;
+  employeeDetails:FormGroup<profileForm>|null=null;
 
-  getselectedProject(projectid:string|null|undefined):string |undefined{
-  var id=Number(projectid)
+  getselectedProject(projectId:string|null|undefined):string |undefined{
+  var id=Number(projectId)
   var project= this.projects.find(project=>project.id==id)
   return project?.name
 }
   onSubmit()
   {
-    if(this.ProfileForm.valid)
+    if(this.profileForm.valid)
     {
       this.result=true 
-      this.employeeDetails=this.ProfileForm
+      this.employeeDetails=this.profileForm
     }
     else
     {
