@@ -45,16 +45,16 @@ export class ProfilemakingComponent {
   project:new FormControl(''),
   }); 
   projects= [
-    { name: "Hilite", isActive: true },
-    { name: "Lulu", isActive: true },
-    { name: "Cordova School", isActive: true },
-    { name: "Azure Heights Apartments", isActive: true },
-    { name: "Greenfield Mall", isActive: true },
-    { name: "Pinnacle Corporate Towers", isActive: true },
-    { name: "Sunshine Valley Resort", isActive: true },
-    { name: "Everest Office Park", isActive: false },
-    { name: "Maplewood Villas", isActive: false },
-    { name: "Sterling Shopping Complex", isActive: false }
+    { id : 1 ,name: "Hilite", isActive: true },
+    { id : 2 ,name: "Lulu", isActive: true },
+    { id : 3 ,name: "Cordova School", isActive: true },
+    { id : 4 ,name: "Greenfield Mall", isActive: true },
+    { id : 5 ,name: "Azure Heights Apartments", isActive: true },
+    { id : 6 ,name: "Pinnacle Corporate Towers", isActive: true },
+    { id : 7 ,name: "Sunshine Valley Resort", isActive: true },
+    { id : 8 ,name: "Everest Office Park", isActive: false },
+    { id : 9 ,name: "Maplewood Villas", isActive: false },
+    { id : 10 ,name: "Sterling Shopping Complex", isActive: false }
   ]
   
   
