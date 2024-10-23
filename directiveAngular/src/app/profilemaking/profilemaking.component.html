@@ -1,8 +1,8 @@
-<form [formGroup]="ProfileForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <label for="fname">First Name: </label>
     <input id="fname" type="text" formControlName="fname"><br>
     
-    <div *ngIf="ProfileForm.controls.fname.errors?.['required'] && (ProfileForm.controls.fname.touched||ProfileForm.controls.fname.dirty)">
+    <div *ngIf="profileForm.controls.fname.errors?.['required'] && (profileForm.controls.fname.touched||profileForm.controls.fname.dirty)">
         First name is required.
     </div>
     <br> <label for="lname">Last Name: </label>
@@ -10,20 +10,20 @@
     <label for="email">Email: </label>
     <input id="email" type="text" formControlName="email" #emaill><br>
    
-    <div *ngIf="ProfileForm.controls.email.errors?.['required'] && (ProfileForm.controls.email.touched||ProfileForm.controls.email.dirty)">
+    <div *ngIf="profileForm.controls.email.errors?.['required'] && (profileForm.controls.email.touched||profileForm.controls.email.dirty)">
         Email is required.
     </div>
     <div
-        *ngIf="ProfileForm.controls.email.invalid && (ProfileForm.controls.email.touched||ProfileForm.controls.email.dirty) && !ProfileForm.controls.email.errors?.['required']">Email is invalid</div>
+        *ngIf="profileForm.controls.email.invalid && (profileForm.controls.email.touched||profileForm.controls.email.dirty) && !profileForm.controls.email.errors?.['required']">Email is invalid</div>
     <label for="phoneNumber">phoneNumber: </label>
     <input id="phoneNumber" type="text" formControlName="phoneNumber"><br>
-    <div *ngIf="ProfileForm.controls.phoneNumber.errors?.['required'] && (ProfileForm.controls.phoneNumber.touched||ProfileForm.controls.phoneNumber.dirty)">
+    <div *ngIf="profileForm.controls.phoneNumber.errors?.['required'] && (profileForm.controls.phoneNumber.touched||profileForm.controls.phoneNumber.dirty)">
         phoneNumber is required.
     </div>
-    <div *ngIf="ProfileForm.controls.phoneNumber.errors?.['maxlength']">
+    <div *ngIf="profileForm.controls.phoneNumber.errors?.['maxlength']">
         phoneNumber must be less than 10 digits
       </div>
-      <div *ngIf="ProfileForm.controls.phoneNumber.invalid && (ProfileForm.controls.phoneNumber.touched||ProfileForm.controls.phoneNumber.dirty) && !ProfileForm.controls.email.errors?.['required']">
+      <div *ngIf="profileForm.controls.phoneNumber.invalid && (profileForm.controls.phoneNumber.touched||profileForm.controls.phoneNumber.dirty) && !profileForm.controls.email.errors?.['required']">
         phoneNumber is invalid
       </div>
     <div formGroupName="address">
@@ -48,7 +48,7 @@
         <option *ngFor="let item of projects">{{item.name| activeProject:item.isActive}}</option>         -->
         
     
-    <button type="submit" [disabled]="!ProfileForm.valid">Submit</button>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
     
     </form>
     
@@ -56,7 +56,7 @@
     <div>
         <p>Employee Details</p>
         <p appBgColor>Name: {{ employeeDetails?.value?.fname| uppercase}} {{ employeeDetails?.value?.lname| uppercase}} </p>
-        <!-- <p *ngIf="this.ProfileForm.get('email')?.value?.endsWith('@gmail.com')">Email:{{ ProfileForm.get('email')?.value}} </p> -->
+        <!-- <p *ngIf="this.profileForm.get('email')?.value?.endsWith('@gmail.com')">Email:{{ profileForm.get('email')?.value}} </p> -->
         <p *appEmail="employeeDetails?.value?.email">Email:{{ employeeDetails?.value?.email}} </p>
         <p>Phone Number: {{ employeeDetails?.value?.phoneNumber}} </p>
         <p>Address Line 1: {{ employeeDetails?.value?.address}} </p>
