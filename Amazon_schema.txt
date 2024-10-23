@@ -1,0 +1,66 @@
+create table Users(UserId int primary key identity(1,1),
+Name varchar(50),
+PhoneNumber nvarchar(15),
+Email varchar(254) unique);
+
+create table Addresses(AddressId int primary key identity(1,1),
+StreetAddress VARCHAR(100),
+City VARCHAR(50),
+State VARCHAR(50),
+PostalCode VARCHAR(10),
+Country VARCHAR(50),
+UserId int not null,
+foreign key(UserId) references User(UserId));
+
+create table Categories(CategoryId int primary key identity(1,1),
+CategoryName varchar(50) not null);
+
+
+create table Products(ProductId int primary key identity(1,1),
+productName varchar(50) not null,
+CategoryId int not null,
+Price decimal(10,2) not null,
+foreign key(CategoryId) references Categories(CategoryId));
+
+create table OrderStatus(OrderStatusId int primary key identity(1,1),
+OrderStatus VARCHAR(50) NOT NULL)); 
+
+create table Orders(OrderID int primary key identity(1,1),
+UserId int not null,
+TotalAmount decimal(10,2) not null,
+OrderStatusId int NOT NULL, 
+OrderDate DATETIME NOT NULL DEFAULT GETDATE(),
+foreign key(UserId) references Users(UserId),
+foreign key(OrderStatusId) references OrderStatus(OrderStatusId));
+
+create table OrderedProducts(OrderedProductsId int primary key identity(1,1),
+ProductId int not null,
+OrderId int not null,
+Quantity int not null,
+Amount decimal(10,2) not null,
+foreign key(ProductId) references Products(ProductId),
+foreign key(OrderId) references Orders(OrderId);
+);
+
+
+create table Payments(
+PaymentID INT PRIMARY KEY IDENTITY(1,1),
+OrderID INT NOT NULL,
+PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+Amount DECIMAL(10, 2) NOT NULL,
+PaymentMethod VARCHAR(50) NOT NULL, 
+PaymentStatus VARCHAR(20) NOT NULL, 
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID));
+
+
+create table Reviews(
+Reviewid int primary key identity(1,1),
+ProductId int NOT NULL,
+UserId INT NOT NULL,
+Rating int ,
+Comments text,
+foreign key(UserId) references Users(UserId),
+foreign key(ProductId) references Products(ProductId),
+constraint check_rating check (Rating between 1 and 5));
+
+

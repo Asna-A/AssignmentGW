@@ -1,0 +1,51 @@
+CREATE TABLE Customer (
+    CustomerId INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(50) NOT NULL,
+    PhoneNumber NVARCHAR(15),
+    Email VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE Vehicles (
+    VehicleId INT PRIMARY KEY IDENTITY(1,1),  
+    DriverId INT NOT NULL,                
+    Model VARCHAR(50) NOT NULL,                  
+    LicensePlate VARCHAR(15) UNIQUE,
+    Capacity INT NOT NULL,           
+    VehicleType VARCHAR(20),        
+    Status VARCHAR(20),
+    FOREIGN KEY (DriverId) REFERENCES Driver(DriverId)
+);
+
+CREATE TABLE Driver (
+    DriverId INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(50) NOT NULL,
+    PhoneNumber NVARCHAR(15),
+    Email VARCHAR(254) UNIQUE
+);
+
+CREATE TABLE Ride (
+    RideId INT PRIMARY KEY IDENTITY(1,1),
+    DriverId INT NOT NULL,
+    VehicleId INT NOT NULL,
+    CustomerId INT NOT NULL,
+    PaymentID INT NOT NULL,
+    RideStartTime DATETIME,
+    RideEndTime DATETIME,
+    StartLocation VARCHAR(255),
+    EndLocation VARCHAR(255),
+    Fare DECIMAL(10,2),
+    RideStatus VARCHAR(20),
+    FOREIGN KEY (DriverId) REFERENCES Driver(DriverId),
+    FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId),
+    FOREIGN KEY (VehicleId) REFERENCES Vehicles(VehicleId)
+);
+
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY IDENTITY(1,1),
+    RideId INT NOT NULL,
+    PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+    Amount DECIMAL(10, 2) NOT NULL,
+    PaymentMethod VARCHAR(50) NOT NULL, 
+    PaymentStatus VARCHAR(20) NOT NULL, 
+    FOREIGN KEY (RideId) REFERENCES Ride(RideId)
+);
