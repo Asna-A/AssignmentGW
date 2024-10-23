@@ -59,14 +59,15 @@ export class ProfilemakingComponent {
   
   
   result:boolean|false=false;
-  employeeDetails:any
+  employeeDetails:FormGroup<ProfileForm>|null=null;
+
   
   onSubmit()
   {
     if(this.ProfileForm.valid)
     {
       this.result=true 
-      this.employeeDetails=this.ProfileForm.value 
+      this.employeeDetails=this.ProfileForm
     }
     else
     {
