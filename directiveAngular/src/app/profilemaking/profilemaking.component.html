@@ -52,7 +52,8 @@
     
     </form>
     
-    <div *ngIf="result">
+       @if (result) {
+    <div>
         <p>Employee Details</p>
         <p appBgColor>Name: {{ employeeDetails.fname| uppercase}} {{ employeeDetails.lname | uppercase}} </p>
         <!-- <p *ngIf="this.ProfileForm.get('email')?.value?.endsWith('@gmail.com')">Email:{{ ProfileForm.get('email')?.value}} </p> -->
@@ -63,3 +64,4 @@
         <p>City: {{employeeDetails.City}} </p>
         <p>Project:{{employeeDetails.project}}</p>  
     </div>
+}
