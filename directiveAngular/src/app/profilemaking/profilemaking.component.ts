@@ -61,7 +61,11 @@ export class ProfilemakingComponent {
   result:boolean|false=false;
   employeeDetails:FormGroup<ProfileForm>|null=null;
 
-  
+  getselectedProject(projectid:string|null|undefined):string |undefined{
+  var id=Number(projectid)
+  var project= this.projects.find(project=>project.id==id)
+  return project?.name
+}
   onSubmit()
   {
     if(this.ProfileForm.valid)
