@@ -30,7 +30,8 @@ UserId int not null,
 TotalAmount decimal(10,2) not null,
 OrderStatusId int NOT NULL, 
 OrderDate DATETIME NOT NULL DEFAULT GETDATE(),
-foreign key(UserId) references Users(UserId));
+foreign key(UserId) references Users(UserId),
+foreign key(OrderStatusId) references OrderStatus(OrderStatusId));
 
 create table OrderedProducts(OrderedProductsId int primary key identity(1,1),
 ProductId int not null,
