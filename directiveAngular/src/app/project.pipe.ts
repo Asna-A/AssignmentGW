@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ActiveProjectPipe implements PipeTransform {
 
   transform(value: any[], isActive: boolean): any[] {
-    return value.filter(x=>x.isActive==true)
+    return value.filter(x=>x.isActive==isActive)
   }
 
 }
