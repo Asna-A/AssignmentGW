@@ -12,7 +12,7 @@ export class EmailDirective {
    
   }
   
-  @Input() set appEmail(email:string)
+  @Input() set appEmail(email:string|null|undefined)
   {
     if(email)
     {
