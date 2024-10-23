@@ -21,7 +21,7 @@
         phoneNumber is required.
     </div>
     <div *ngIf="ProfileForm.controls.phoneNumber.errors?.['maxlength']">
-        phoneNumber maxlength is 10
+        phoneNumber must be less than 10 digits
       </div>
       <div *ngIf="ProfileForm.controls.phoneNumber.invalid && (ProfileForm.controls.phoneNumber.touched||ProfileForm.controls.phoneNumber.dirty) && !ProfileForm.controls.email.errors?.['required']">
         phoneNumber is invalid
@@ -40,7 +40,7 @@
       
     <ng-select [items]="projects|activeProject:true"
     bindLabel="name"
-    bindValue="name" placeholder="select project" formControlName="project"
+    bindValue="id" placeholder="select project" formControlName="project"
     >
     </ng-select>
     
