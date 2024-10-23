@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AddNewItemService } from '../add-new-item.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-view-item',
   standalone: true,
@@ -19,7 +19,7 @@ export class ViewItemComponent {
     
   ngOnInit()
   {
-    this.AddItemService.AddItemService$.subscribe(newItem=>this.addData(newItem));
+    this.AddItemService.AddItemService$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(newItem=>this.addData(newItem));
   }
   
   addData(newItem:string) {
