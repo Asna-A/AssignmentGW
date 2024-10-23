@@ -1,0 +1,9 @@
+
+@for (item of items; track item; let index = $index){
+    <ul>
+    <li> {{item}}
+    <button class="deleteButton" type="button" (click)="deleteItem(index)">Delete item</button>
+    </li>
+    </ul>
+    }
+    
