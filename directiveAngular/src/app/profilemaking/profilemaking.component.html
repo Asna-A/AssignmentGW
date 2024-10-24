@@ -1,0 +1,67 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label for="fname">First Name: </label>
+    <input id="fname" type="text" formControlName="fname"><br>
+    
+    <div *ngIf="profileForm.controls.fname.errors?.['required'] && (profileForm.controls.fname.touched||profileForm.controls.fname.dirty)">
+        First name is required.
+    </div>
+    <br> <label for="lname">Last Name: </label>
+    <input id="lname" type="text" formControlName="lname"><br>
+    <label for="email">Email: </label>
+    <input id="email" type="text" formControlName="email" #emaill><br>
+   
+    <div *ngIf="profileForm.controls.email.errors?.['required'] && (profileForm.controls.email.touched||profileForm.controls.email.dirty)">
+        Email is required.
+    </div>
+    <div
+        *ngIf="profileForm.controls.email.invalid && (profileForm.controls.email.touched||profileForm.controls.email.dirty) && !profileForm.controls.email.errors?.['required']">Email is invalid</div>
+    <label for="phoneNumber">phoneNumber: </label>
+    <input id="phoneNumber" type="text" formControlName="phoneNumber"><br>
+    <div *ngIf="profileForm.controls.phoneNumber.errors?.['required'] && (profileForm.controls.phoneNumber.touched||profileForm.controls.phoneNumber.dirty)">
+        phoneNumber is required.
+    </div>
+    <div *ngIf="profileForm.controls.phoneNumber.errors?.['maxlength']">
+        phoneNumber must be less than 10 digits
+      </div>
+      <div *ngIf="profileForm.controls.phoneNumber.invalid && (profileForm.controls.phoneNumber.touched||profileForm.controls.phoneNumber.dirty) && !profileForm.controls.email.errors?.['required']">
+        phoneNumber is invalid
+      </div>
+    <div formGroupName="address">
+    <h2>Address</h2>
+    <label for="AddressLine1">Address Line 1: </label>
+    <input id="AddressLine1" type="text" formControlName="addressLine1"><br>
+    <label for="AddressLine2">Address Line 2: </label>
+    <input id="AddressLine2" type="text" formControlName="addressLine2"><br>
+    <label for="City">City </label>
+    <input id="City" type="text" formControlName="city"><br> 
+    </div>
+    <label>Project</label>
+    
+      
+    <ng-select [items]="projects|activeProject:true"
+    bindLabel="name"
+    bindValue="id" placeholder="select project" formControlName="project"
+    >
+    </ng-select>
+    
+    <!--     
+        <option *ngFor="let item of projects">{{item.name| activeProject:item.isActive}}</option>         -->
+        
+    
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    
+    </form>
+    
+       @if (result) {
+    <div>
+        <p>Employee Details</p>
+        <p appBgColor>Name: {{ employeeDetails?.value?.fname| uppercase}} {{ employeeDetails?.value?.lname| uppercase}} </p>
+        <!-- <p *ngIf="this.profileForm.get('email')?.value?.endsWith('@gmail.com')">Email:{{ profileForm.get('email')?.value}} </p> -->
+        <p *appEmail="employeeDetails?.value?.email">Email:{{ employeeDetails?.value?.email}} </p>
+        <p>Phone Number: {{ employeeDetails?.value?.phoneNumber}} </p>
+        <p>Address Line 1: {{ employeeDetails?.value?.address}} </p>
+        <p>Address Line 2: {{ employeeDetails?.value?.address?.AddressLine1}} </p>
+        <p>City: {{employeeDetails?.value?.address?.AddressLine2}} </p>
+        <p>Project:{{getselectedProject(employeeDetails?.value?.project)}}</p>  
+    </div>
+}
