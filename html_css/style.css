@@ -1,0 +1,78 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family:"Poppins";
+    font-size: 12px;
+
+}
+.heading{
+    color: #080a52;
+}
+.signin{
+    background-color: #ffff;
+    padding: 12px;
+    font-size: 12px;
+}
+.signin:hover{
+    background-color: #73a2ce !important;
+}
+.emailPassword{
+    background-color: #f3f3f3;
+    border: none;
+}
+.linkcolor{
+    color: black;   
+}
+.login{
+    background-color: #eb2188;
+    border: none;
+    padding: 10px;
+}
+.text{
+    color: #443f3f;
+    text-align: center;
+    margin: 0px 100px 25px 100px ;
+}
+.section {
+    height: 100vh; 
+    overflow: hidden;  
+}
+.form-container{
+    z-index: 1;
+    background-color: rgba(255, 255, 255); 
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-right: -40px;   
+}
+.image{
+    height: 100%;
+    width: 100%;   
+}
+.or-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.line {
+    flex-grow:1;
+    height: 1px;
+    background: #bdbdbd;
+    margin: 8px;
+}
+.login:hover{
+    background-color: #73a2ce;
+}
+.svggoogle{
+    height: 15px;
+    width: 15px;   
+}
+
+.svgfb{
+    height: 15px;
+    width: 15px;
+}

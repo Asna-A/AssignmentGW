@@ -1,0 +1,50 @@
+create table Customer(
+customerId int primary key identity(1,1),
+name varchar(50) not null,
+phoneNumber nvarchar(15),
+email varchar(255) unique);
+
+CREATE TABLE vehicles(
+vehicleId int PRIMARY KEY IDENTITY(1,1),  
+driverId INT NOT NULL,                
+model VARCHAR(50) NOT NULL,                  
+license_plate VARCHAR(15) UNIQUE,
+capacity INT NOT NULL,           
+vehicle_type VARCHAR(20),        
+status VARCHAR(20));
+
+create table Driver(
+driverId int primary key identity(1,1),
+name varchar(50) not null,
+phoneNumber nvarchar(15),
+email varchar(254) unique);
+
+create table Ride(
+rideId int primary key identity(1,1),
+driverId int not null,
+vehicleId int not null,
+customerId int not null,
+paymentID int not null,
+rideStartTime datetime,
+rideEndTime datetime,
+startLocation varchar(255),
+endLocation varchar(255),
+fair decimal(10,2),
+rideStatus varchar(20),
+FOREIGN KEY(driverId) REFERENCES Driver(driverId),
+FOREIGN KEY(customerId) REFERENCES customer(customerId),
+FOREIGN KEY(vehicleId) REFERENCES vehicles(vehicleId));
+
+create table Payments(paymentID INT PRIMARY KEY IDENTITY(1,1),
+rideId INT NOT NULL,
+PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+Amount DECIMAL(10, 2) NOT NULL,
+PaymentMethod VARCHAR(50) NOT NULL, 
+PaymentStatus VARCHAR(20) NOT NULL, 
+FOREIGN KEY(rideId) REFERENCES Ride(rideId));
+
+
+
+
+
+
